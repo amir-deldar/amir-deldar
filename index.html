@@ -23,6 +23,28 @@
       }
     </style>
     <link rel="stylesheet" href="assets/css/style.css" />
+        <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var panel = document.getElementById("navPanel");
+        var icons = document.querySelector("#nav ul.icons");
+        if (!panel || !icons) return;
+
+        // Mirror the navbar icons into the slide-out panel (once)
+        if (!panel.querySelector(".nav-panel-icons")) {
+          var wrap = document.createElement("div");
+          wrap.className = "nav-panel-icons";
+          wrap.appendChild(icons.cloneNode(true));
+          panel.appendChild(wrap);
+        }
+
+        // Close the panel when an in-page link is tapped
+        panel.addEventListener("click", function (e) {
+          if (e.target.closest('a[href^="#"]')) {
+            document.body.classList.remove("is-navPanel-visible");
+          }
+        });
+      });
+    </script>
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
