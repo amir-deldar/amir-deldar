@@ -418,87 +418,76 @@
 }
 
 /* ==========================================================
-   NAVBAR – in-page links, social icons, responsive layout
-   (append at the end of style.css)
+   NAVBAR – mobile / tablet (hamburger + slide-out panel)
 ========================================================== */
 
-/* Smooth scrolling for the in-page nav links */
 html {
   scroll-behavior: smooth;
 }
 
-/* Keep anchored sections clear of the very top edge */
 #main,
 #about,
 #contact {
   scroll-margin-top: 1rem;
 }
 
-/* ---- Tablet / mobile: use the real navbar instead of the
-        slide-out panel (main.js still creates it, we just hide it) ---- */
-
 @media screen and (max-width: 980px) {
-  #navPanelToggle,
-  #navPanel {
+  /* Let the template's JS-generated hamburger + panel work again */
+  #nav {
     display: none !important;
   }
 
-  #nav {
+  #navPanelToggle {
+    display: block !important;
+  }
+
+  #navPanel {
+    display: block !important;
+  }
+
+  /* Panel links spacing */
+  #navPanel .links {
+    margin-bottom: 0;
+  }
+
+  #navPanel .links li a {
+    display: block;
+  }
+
+  /* Icons block inside the panel */
+  #navPanel .nav-panel-icons {
+    border-top: solid 2px #eeeeee;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+  }
+
+  #navPanel .nav-panel-icons ul.icons {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    height: auto;
-    line-height: 1.2;
-    padding: 0.35rem 0.75rem;
-    overflow: visible;
-    row-gap: 0.15rem;
-  }
-
-  /* Links row */
-  #nav ul.links {
-    flex: 0 1 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  #nav ul.links li a {
-    padding: 0.85rem 1.1rem;
-    line-height: 1.2;
-  }
-
-  /* Icons row – sits beside the links, wraps underneath when tight */
-  #nav ul.icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
+    gap: 0.35rem;
+    list-style: none;
     margin: 0;
-    padding-left: 0.5rem;
+    padding: 0;
   }
 
-  #nav ul.icons li .icon:before {
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    font-size: 1.05rem;
-  }
-}
-
-/* Align the taller nav with the logo on small screens */
-@media screen and (max-width: 736px) {
-  #nav {
-    margin-top: -3rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  #nav {
-    width: 100%;
+  #navPanel .nav-panel-icons ul.icons li {
+    padding: 0;
   }
 
-  #nav ul.links li a {
-    padding: 0.8rem 0.85rem;
-    font-size: 0.75rem;
+  #navPanel .nav-panel-icons ul.icons li a.icon {
+    border-bottom: 0;
+  }
+
+  #navPanel .nav-panel-icons ul.icons li .icon:before {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 0 2px #eeeeee;
+  }
+
+  #navPanel .nav-panel-icons ul.icons li a.icon:hover:before {
+    color: #18bfef;
+    box-shadow: inset 0 0 0 2px #18bfef;
   }
 }
